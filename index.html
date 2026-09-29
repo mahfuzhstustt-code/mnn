@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Noshin ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #ffd6e7, #fff0f6, #ffe4ec);
+    overflow: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 420px;
+    background: rgba(255,255,255,0.92);
+    border-radius: 28px;
+    padding: 28px 20px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(255, 80, 130, 0.25);
+    position: relative;
+    z-index: 2;
+}
+
+h1 {
+    color: #ff4f87;
+    font-size: 28px;
+    margin: 10px 0;
+}
+
+.question {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #555;
+    margin: 18px 0;
+}
+
+/* Cute picture */
+.cute-pic {
+    width: 170px;
+    height: 170px;
+    margin: auto;
+    border-radius: 50%;
+    background: #fff5f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 90px;
+    box-shadow: 0 8px 25px rgba(255, 100, 150, .2);
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    min-height: 55px;
+}
+
+button {
+    border: none;
+    padding: 13px 28px;
+    border-radius: 30px;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .25s;
+}
+
+#yesBtn {
+    background: #ff4f87;
+    color: white;
+    box-shadow: 0 7px 18px rgba(255, 79, 135, .35);
+}
+
+#yesBtn:hover {
+    transform: scale(1.08);
+}
+
+#noBtn {
+    background: #eeeeee;
+    color: #666;
+    position: relative;
+}
+
+/* Final message */
+#finalPage {
+    display: none;
+}
+
+.love-text {
+    color: #555;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.signature {
+    margin-top: 18px;
+    color: #ff4f87;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    bottom: -30px;
+    font-size: 25px;
+    animation: floatUp 5s linear forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Kiss animation */
+.kiss {
+    font-size: 75px;
+    animation: kiss 1.2s infinite alternate;
+}
+
+@keyframes kiss {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.15) rotate(5deg);
+    }
+}
+
+/* Sad picture */
+.sad-pic {
+    font-size: 85px;
+}
+
+/* Mobile */
+@media(max-width: 450px) {
+
+    .card {
+        padding: 25px 16px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    .question {
+        font-size: 17px;
+    }
+
+    .cute-pic {
+        width: 145px;
+        height: 145px;
+        font-size: 75px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- First Page -->
+<div class="card" id="questionPage">
+
+    <div class="cute-pic" id="picture">
+        🥰🌸
+    </div>
+
+    <h1>Noshin ❤️</h1>
+
+    <div class="question">
+        Will you stay by my side through all the little moments,
+        the smiles, the tears, and everything in between? ❤️
+    </div>
+
+    <div class="buttons">
+        <button id="yesBtn" onclick="yesClicked()">Yes 🥰</button>
+
+        <button id="noBtn" onclick="noClicked()">No 😶</button>
+    </div>
+
+    <p id="noText" style="color:#ff6b91;"></p>
+
+</div>
+
+
+<!-- Final Page -->
+<div class="card" id="finalPage">
+
+    <div class="kiss">
+        💋❤️
+    </div>
+
+    <h1>Then it's a promise… 🤍</h1>
+
+    <p class="love-text">
+
+        No matter where life takes us,
+        I’ll always choose you, care for you,
+        and do everything I can to keep you smiling. ❤️
+
+        <br><br>
+
+        You’re not just someone I love —
+        you’re someone I want beside me for a lifetime. 🌸
+
+    </p>
+
+    <div class="signature">
+        Always yours, Noshin ❤️
+    </div>
+
+</div>
+
+
+<script>
+
+let noCount = 0;
+
+function noClicked() {
+
+    noCount++;
+
+    const noBtn = document.getElementById("noBtn");
+    const picture = document.getElementById("picture");
+    const noText = document.getElementById("noText");
+
+    const messages = [
+        "Are you sure? 🥺",
+        "Think again… ❤️",
+        "Please don't say no 🥹",
+        "One more chance? 🌸",
+        "My heart is getting sad… 💔",
+        "Noshin, please? 🥺❤️",
+        "Okay... but I still love you. 😭❤️"
+    ];
+
+    noText.innerText =
+        messages[Math.min(noCount - 1, messages.length - 1)];
+
+    /* Change picture */
+    if (noCount >= 2) {
+        picture.innerHTML = "🥺💔";
+        picture.classList.add("sad-pic");
+    }
+
+    /*
+       Move NO button around
+    */
+    const maxX = 100;
+    const maxY = 60;
+
+    const x = Math.random() * maxX - maxX / 2;
+    const y = Math.random() * maxY - maxY / 2;
+
+    noBtn.style.transform =
+        translate(${x}px, ${y}px);
+
+    /* Make YES button bigger */
+    const yesBtn = document.getElementById("yesBtn");
+
+    let size = 17 + noCount * 2;
+
+    if (size > 30) size = 30;
+
+    yesBtn.style.fontSize = size + "px";
+}
+
+
+function yesClicked() {
+
+    document.getElementById("questionPage").style.display = "none";
+
+    document.getElementById("finalPage").style.display = "block";
+
+    createHearts();
+
+    setInterval(createHearts, 800);
+}
+
+
+/* Floating hearts */
+function createHearts() {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    const
